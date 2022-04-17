@@ -40,11 +40,9 @@ export function IssueItem({
           {`${createdByUser.isSuccess ? `by ${createdByUser.data.name}` : ""}`}
         </small>
       </div>
-      {assignee ? (
+      {assignee && assigneeUser.isSuccess ? (
         <img
-          src={
-            assigneeUser.isSuccess ? assigneeUser.data.profilePictureUrl : ""
-          }
+          src={assigneeUser.data.profilePictureUrl || ""}
           className="assigned-to"
           alt="Assigned to avatar"
         />
