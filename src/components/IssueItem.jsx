@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { GoIssueOpened, GoIssueClosed, GoComment } from "react-icons/go";
 import { relativeDate } from "../helpers/relativeDate";
 import { useUserData } from "../helpers/useUserData";
+import { Label } from "./Label";
 
 export function IssueItem({
-  key,
   title,
   number,
   assignee,
@@ -16,7 +16,7 @@ export function IssueItem({
 }) {
   const assigneeUser = useUserData(assignee);
   const createdByUser = useUserData(createdBy);
-  console.log({ createdByUser });
+
   return (
     <li>
       <div>
@@ -30,9 +30,7 @@ export function IssueItem({
         <span>
           <Link to={`/issues/${number}`}>{title}</Link>
           {labels.map((label) => (
-            <span key={label} className={`label red`}>
-              {label}
-            </span>
+            <Label key={label} label={label} />
           ))}
         </span>
         <small>
